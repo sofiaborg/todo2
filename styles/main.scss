@@ -1,0 +1,23 @@
+@import "./header.scss";
+@import "./footer.scss";
+@import "./start.scss";
+@import "./edit.scss";
+
+html,
+body {
+  font-family: "century gothic", Courier, monospace;
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(244, 252, 244);
+
+  #wrapper {
+    width: 500px;
+    background-color: rgb(243, 222, 226);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+}

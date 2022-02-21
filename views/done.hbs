@@ -1,0 +1,24 @@
+<div class="viewDiv">
+  <div>
+    <h5>view tasks by:</h5>
+    <a href="/done">done</a>
+    <a href="/undone">undone</a>
+    <a href="/">all</a>
+  </div>
+</div>
+{{#if doneArr}}
+
+  {{#each doneArr}}
+
+    <ul><li><h4>{{description}}</h4>
+        <p>created at
+          {{time}}</p>
+      </li>
+    </ul>
+
+  {{/each}}
+
+{{else}}
+  <p>none of the tasks are done yet :( </p>
+
+{{/if}}

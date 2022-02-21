@@ -1,0 +1,22 @@
+header {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  div {
+    width: 100%;
+    h2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Nanum Gothic Coding", monospace;
+
+      a {
+        text-decoration: none;
+        color: black;
+        font-size: 20pt;
+      }
+    }
+  }
+}

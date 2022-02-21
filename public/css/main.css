@@ -1,0 +1,161 @@
+header {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+header div {
+  width: 100%;
+}
+header div h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nanum Gothic Coding", monospace;
+}
+header div h2 a {
+  text-decoration: none;
+  color: black;
+  font-size: 20pt;
+}
+
+footer {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#mainWrapper .viewDiv {
+  padding-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+#mainWrapper .viewDiv div {
+  padding-right: 20px;
+}
+#mainWrapper .viewDiv div h5 {
+  margin: 0px;
+}
+#mainWrapper .viewDiv div a {
+  text-decoration: none;
+  color: black;
+  font-size: 10pt;
+}
+#mainWrapper .viewDiv div a:hover {
+  text-decoration: underline;
+}
+#mainWrapper .sortDiv {
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  gap: 10px;
+}
+#mainWrapper .sortDiv h5 {
+  margin: 0px;
+}
+#mainWrapper .sortDiv a {
+  text-decoration: none;
+  color: black;
+  font-size: 10pt;
+}
+#mainWrapper .sortDiv a:hover {
+  text-decoration: underline;
+}
+#mainWrapper ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+#mainWrapper ul li {
+  display: flex;
+  justify-content: space-between;
+  width: 450px;
+  font-size: 10pt;
+}
+#mainWrapper ul li .nameCheck {
+  display: flex;
+  gap: 10px;
+}
+#mainWrapper ul li .nameCheck h4 {
+  margin: 0px;
+  padding: 0px;
+}
+#mainWrapper ul li .nameCheck p {
+  font-size: 8pt;
+  font-style: italic;
+  margin: 0px;
+  padding: 0px;
+}
+#mainWrapper ul li .nameCheck .check input {
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+#mainWrapper ul li .editDel {
+  display: flex;
+}
+#mainWrapper ul li .editDel a {
+  text-decoration: none;
+  margin: 0px;
+  padding: 0px;
+  color: black;
+  font-size: 10pt;
+}
+#mainWrapper ul li .editDel a:hover {
+  text-decoration: underline;
+}
+#mainWrapper ul li .editDel .delete input {
+  margin-left: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+  background: #ff6a6a;
+  border: 0 none;
+}
+#mainWrapper .formDiv {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+#mainWrapper .formDiv form {
+  margin: 0px;
+}
+#mainWrapper .formDiv form .submitBtn {
+  cursor: pointer;
+}
+
+.editForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.editForm form {
+  padding-top: 50px;
+}
+.editForm form .submitBtn {
+  cursor: pointer;
+}
+
+html,
+body {
+  font-family: "century gothic", Courier, monospace;
+  width: 100%;
+  height: 100vh;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4fcf4;
+}
+html #wrapper,
+body #wrapper {
+  width: 500px;
+  background-color: #f3dee2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}

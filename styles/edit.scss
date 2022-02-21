@@ -1,0 +1,13 @@
+.editForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    padding-top: 50px;
+    input {
+    }
+    .submitBtn {
+      cursor: pointer;
+    }
+  }
+}
