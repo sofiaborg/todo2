@@ -1,3 +1,5 @@
+@use "mixins";
+
 #mainWrapper {
   .viewDiv {
     padding-top: 20px;
@@ -11,7 +13,7 @@
       }
       a {
         text-decoration: none;
-        color: black;
+        @include mixins.textColor;
         font-size: 10pt;
         &:hover {
           text-decoration: underline;
@@ -31,7 +33,7 @@
     }
     a {
       text-decoration: none;
-      color: black;
+      @include mixins.textColor;
       font-size: 10pt;
       &:hover {
         text-decoration: underline;
@@ -41,8 +43,7 @@
 
   ul {
     list-style: none;
-    margin: 0px;
-    padding: 0px;
+    @include mixins.paddingMargin;
     padding-top: 10px;
     padding-left: 20px;
 
@@ -55,14 +56,12 @@
         display: flex;
         gap: 10px;
         h4 {
-          margin: 0px;
-          padding: 0px;
+          @include mixins.paddingMargin;
         }
         p {
           font-size: 8pt;
           font-style: italic;
-          margin: 0px;
-          padding: 0px;
+          @include mixins.paddingMargin;
         }
         .check {
           input {
@@ -77,9 +76,8 @@
         display: flex;
         a {
           text-decoration: none;
-          margin: 0px;
-          padding: 0px;
-          color: black;
+          @include mixins.paddingMargin;
+          @include mixins.textColor;
           font-size: 10pt;
           &:hover {
             text-decoration: underline;

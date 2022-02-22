@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { ObjectId } = require("mongodb");
-const getDb = require("../database");
+const db = require("../database");
 const dateTime = require("node-datetime");
 
 //the urlencoded method within body-parser tells body-parser to extract data from the <form>
@@ -11,13 +11,8 @@ router.use(bodyParser.urlencoded({ extended: true }));
 
 //GET all the tasks <<from the database>> and render them to start-page
 router.get("/", async (req, res) => {
-  const tasksArr = [];
-  const db = await getDb();
-  const dbTasks = db.collection("tasks").find();
-
-  await dbTasks.forEach((element) => {
-    tasksArr.push(element);
-  });
+  const collection = await db.getTaskCollection();
+  const tasksArr = await collection.find().toArray();
   res.render("start", { tasksArr });
 });
 
@@ -31,8 +26,8 @@ router.post("/", async (req, res) => {
     status: false,
   };
 
-  const db = await getDb();
-  await db.collection("tasks").insertOne(addTask);
+  const taskCollection = await db.getTaskCollection();
+  await taskCollection.insertOne(addTask);
 
   res.redirect("/");
 });
@@ -40,8 +35,8 @@ router.post("/", async (req, res) => {
 //EDIT task
 router.get("/:id/edit", async (req, res) => {
   const id = ObjectId(req.params.id);
-  const db = await getDb();
-  db.collection("tasks").findOne({ _id: id }, (err, task) => {
+  const taskCollection = await db.getTaskCollection();
+  taskCollection.findOne({ _id: id }, (err, task) => {
     res.render("edit", task);
   });
 });
@@ -53,8 +48,8 @@ router.post("/:id/edit", async (req, res) => {
     description: req.body.description,
   };
 
-  const db = await getDb();
-  await db.collection("tasks").updateOne({ _id: id }, { $set: editTask });
+  const taskCollection = await db.getTaskCollection();
+  await taskCollection.updateOne({ _id: id }, { $set: editTask });
   res.redirect("/");
 });
 
@@ -70,8 +65,8 @@ router.post("/:id/status", async (req, res) => {
     status: Boolean(req.body.status),
   };
 
-  const db = await getDb();
-  await db.collection("tasks").updateOne({ _id: id }, { $set: editStatus });
+  const taskCollection = await db.getTaskCollection();
+  await taskCollection.updateOne({ _id: id }, { $set: editStatus });
   res.redirect("/");
 });
 
@@ -82,48 +77,37 @@ router.get("/:id/delete", (req, res) => {
 
 router.post("/:id/delete", async (req, res) => {
   const id = ObjectId(req.params.id);
-  const db = await getDb();
-  await db.collection("tasks").deleteOne({ _id: id });
+  const taskCollection = await db.getTaskCollection();
+  await taskCollection.deleteOne({ _id: id });
   res.redirect("/");
 });
 
 //SORT based on status
 router.get("/done", async (req, res) => {
-  const db = await getDb();
-  const doneArr = await db.collection("tasks").find({ status: true }).toArray();
+  const taskCollection = await db.getTaskCollection();
+  const doneArr = await taskCollection.find({ status: true }).toArray();
 
   res.render("done", { doneArr });
 });
 
 router.get("/undone", async (req, res) => {
-  const db = await getDb();
-  const undoneArr = await db
-    .collection("tasks")
-    .find({ status: false })
-    .toArray();
+  const taskCollection = await db.getTaskCollection();
+  const undoneArr = await taskCollection.find({ status: false }).toArray();
 
   res.render("undone", { undoneArr });
 });
 
 //SORT based on new/old
 router.get("/oldest", async (req, res) => {
-  const db = await getDb();
-  const tasksArr = await db
-    .collection("tasks")
-    .find()
-    .sort({ time: 1 })
-    .toArray();
+  const taskCollection = await db.getTaskCollection();
+  const tasksArr = await taskCollection.find().sort({ time: 1 }).toArray();
 
   res.render("start", { tasksArr });
 });
 
 router.get("/newest", async (req, res) => {
-  const db = await getDb();
-  const tasksArr = await db
-    .collection("tasks")
-    .find()
-    .sort({ time: -1 })
-    .toArray();
+  const taskCollection = await db.getTaskCollection();
+  const tasksArr = await taskCollection.find().sort({ time: -1 }).toArray();
 
   res.render("start", { tasksArr });
 });

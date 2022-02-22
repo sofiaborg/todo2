@@ -1,3 +1,5 @@
+@use "mixins";
+
 header {
   width: 100%;
   padding-top: 20px;
@@ -14,7 +16,7 @@ header {
 
       a {
         text-decoration: none;
-        color: black;
+        @include mixins.textColor;
         font-size: 20pt;
       }
     }

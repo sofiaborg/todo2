@@ -5,6 +5,8 @@ const app = express();
 const path = require("path");
 const taskRoute = require("./routes/tasks.js");
 
+require("dotenv").config();
+
 /////////engine//////////
 app.engine(
   "hbs",
